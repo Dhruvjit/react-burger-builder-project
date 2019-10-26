@@ -23,7 +23,10 @@ const BuildControls = (props) => (
             * added => this property needs to be connected to more button in BuildControl so make use of onClick property
             * as this should function when user clicks
             * */
-            <BuildControl key={ctrl.label} label={ctrl.label} added={()=> props.ingredientAdded(ctrl.type)}/>
+            <BuildControl 
+                        key={ctrl.label} 
+                        label={ctrl.label} 
+                        added={()=> props.ingredientAdded(ctrl.type)}/>
         ))}
     </div>
 );
