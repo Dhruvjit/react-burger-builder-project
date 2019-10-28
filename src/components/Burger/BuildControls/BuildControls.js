@@ -13,6 +13,7 @@ const controls = [
 
 const BuildControls = (props) => (
     <div className={classes.BuildControls}>
+        <p>Current Price: <strong>{props.price.toFixed(2)}</strong></p>
         {controls.map(ctrl=>(
             /* here key attribute if not mentioned will throw warning for not stating unique key */
 
@@ -24,10 +25,14 @@ const BuildControls = (props) => (
             * as this should function when user clicks
             * */
             <BuildControl 
-                        key={ctrl.label} 
-                        label={ctrl.label} 
-                        added={()=> props.ingredientAdded(ctrl.type)}/>
-        ))}
+                        key={ctrl.label}
+                        label={ctrl.label}
+                        added={()=>props.ingredientAdded(ctrl.type)}
+                        removed={()=>props.ingredientRemoved(ctrl.type)}
+                        disabled={props.disabledProp[ctrl.type]}/>
+            ))}
+        <button className={classes.OrderButton}
+                disabled={!props.purchasable}>Order Now</button>
     </div>
 );
 
